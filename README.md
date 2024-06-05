@@ -55,8 +55,6 @@ The project uses the following npm packages:
 - dotenv
 - express
 - express-validator
-- form-data
-- fs
 - mime-types
 - multer
 - nodemon
