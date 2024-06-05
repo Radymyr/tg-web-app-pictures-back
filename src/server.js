@@ -11,7 +11,7 @@ app.use(cors({ origin: '*' }));
 app.use(express.static('./uploads'));
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.EXPRESS_PORT || 3000;
+const PORT = process.env.PORT;
 
 app.post(
   '/upload',
