@@ -19,17 +19,17 @@ app.post(
   getValidateFields,
   async (req, res) => {
     try {
-      if (!req.file) {
-        return res
-          .status(400)
-          .send({ description: 'No file uploaded or invalid file type.' });
-      }
       const { file, body } = req;
 
       const encodedImage = encodeImageToBase64(file.path, file.originalname);
 
       if (encodedImage) {
-        await describeImage(body.userId, file.path, encodedImage, body.text);
+        await describeImage(
+          body.userId,
+          file.path,
+          encodedImage,
+          body.text.toString().trim()
+        );
         res.send({
           description:
             'The image was sent successfully✅ The answer has been sent to your chat 💬',
