@@ -7,7 +7,7 @@ import { upload, getValidateFields } from './filters.js';
 
 export const app = express();
 
-app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.static('./uploads'));
 app.use(express.urlencoded({ extended: true }));
 
