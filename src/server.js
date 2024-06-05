@@ -11,7 +11,7 @@ app.use(cors({ origin: '*' }));
 app.use(express.static('./uploads'));
 app.use(express.urlencoded({ extended: true }));
 
-const EXPRESS_PORT = process.env.EXPRESS_PORT || 3000;
+const PORT = process.env.EXPRESS_PORT || 3000;
 
 app.post(
   '/upload',
@@ -45,7 +45,5 @@ app.post(
 );
 
 export const startServer = () => {
-  app.listen(EXPRESS_PORT, () =>
-    console.log(`listening on port ${EXPRESS_PORT}`)
-  );
+  app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 };
