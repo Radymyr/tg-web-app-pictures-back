@@ -10,10 +10,10 @@ bot.start(async (ctx) => {
 
 bot.on('message', (ctx) => {
   try {
-    ctx.sendMessage(
-      `${instruction} ${ctx.from.first_name}! 😊`,
-      inlineOpenButton
-    );
+    ctx.sendMessage(`${instruction} ${ctx.from.first_name}! 😊`, {
+      parse_mode: 'Markdown',
+      ...inlineOpenButton,
+    });
   } catch (error) {
     console.error('Error sending message:', error);
   }
@@ -40,6 +40,7 @@ export const sendPhotoToUser = async (userId, filePath, caption) => {
         { caption: caption }
       );
     }
+
     await fs.unlink(filePath);
   } catch (error) {
     console.error('Error sending photo to user:', error);

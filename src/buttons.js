@@ -1,6 +1,6 @@
 import { inlineKeyboard } from 'telegraf/markup';
-import { WebAppUrl } from './initialize.js';
+import 'dotenv/config';
 
 export const inlineOpenButton = inlineKeyboard([
-  { text: 'Open the app', web_app: { url: WebAppUrl } },
+  { text: 'Open the app', web_app: { url: process.env.WebAppUrl } },
 ]);

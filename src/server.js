@@ -1,22 +1,22 @@
 import express from 'express';
 import cors from 'cors';
-import { query } from 'express-validator';
 
-import { upload } from './filters.js';
 import { encodeImageToBase64 } from './encodeImage.js';
 import { describeImage } from './openai.js';
-import { fieldValidation } from './filters.js';
+import { upload, getValidateFields } from './filters.js';
 
 export const app = express();
+
 app.use(cors({ origin: '*' }));
 app.use(express.static('./uploads'));
+app.use(express.urlencoded({ extended: true }));
 
 const EXPRESS_PORT = process.env.EXPRESS_PORT || 3000;
 
 app.post(
   '/upload',
-  query(fieldValidation).notEmpty(),
   upload.single('photo'),
+  getValidateFields,
   async (req, res) => {
     try {
       if (!req.file) {
@@ -25,8 +25,6 @@ app.post(
           .send({ description: 'No file uploaded or invalid file type.' });
       }
       const { file, body } = req;
-      console.log('file:', file);
-      console.log('body:', body);
 
       const encodedImage = encodeImageToBase64(file.path, file.originalname);
 
@@ -37,7 +35,7 @@ app.post(
             'The image was sent successfully✅ The answer has been sent to your chat 💬',
         });
       } else {
-        res.status(500).send({ description: 'Failed to encode the image.' });
+        res.status(400).send({ description: 'Failed to encode the image.' });
       }
     } catch (err) {
       console.error('Error handling upload:', err);

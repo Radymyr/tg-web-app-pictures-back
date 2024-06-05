@@ -67,10 +67,12 @@ The project uses the following npm packages:
 
 Step-by-step guide to install and set up the project on your local machine.
 
+[Frontend Repository](https://github.com/Radymyr/tg-web-app-pictures)
+
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/tg-web-app-pictures-back.git
+   git clone https://github.com/Radymyr/tg-web-app-pictures-back.git
    cd tg-web-app-pictures-back
    ```
 
@@ -121,3 +123,9 @@ Guidelines for contributing to the project:
 This project is licensed under the ISC License.
 
 ---
+
+## Live Demo
+
+Check out the working version of the application deployed on a server:
+
+[Working Version](https://t.me/describingPictures_bot)

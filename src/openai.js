@@ -11,9 +11,6 @@ export const describeImage = async (
   textQuestion
 ) => {
   try {
-    if (!encodedImageFile) {
-      throw new Error('Encoded image file is undefined');
-    }
     const response = await openai.chat.completions.create({
       model: 'gpt-4o',
       messages: [
@@ -34,7 +31,6 @@ export const describeImage = async (
     });
 
     const answer = response.choices[0].message.content;
-    console.log('answer:', answer);
 
     if (answer) {
       await sendPhotoToUser(userId, filePath, answer);
