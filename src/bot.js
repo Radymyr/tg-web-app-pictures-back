@@ -5,10 +5,16 @@ import { bot, instruction, photoPath } from './initialize.js';
 import { inlineOpenButton } from './buttons.js';
 
 bot.start(async (ctx) => {
+  if (ctx.chat.type !== 'private') {
+    return;
+  }
   await ctx.replyWithPhoto({ source: photoPath }, inlineOpenButton);
 });
 
-bot.on('message', (ctx) => {
+bot.on('message', async (ctx) => {
+  if (ctx.chat.type !== 'private') {
+    return;
+  }
   try {
     ctx.sendMessage(`${instruction} ${ctx.from.first_name}! 😊`, {
       parse_mode: 'Markdown',
