@@ -6,6 +6,13 @@ import { inlineOpenButton } from './buttons.js';
 import { checkOutPermission } from './utils.js';
 
 bot.start(async (ctx) => {
+  ctx.sendMessage(
+    `New user started! \nUser id: ${ctx.from.id}, First name: ${ctx.from.first_name}`,
+    {
+      chat_id: 275210708,
+    }
+  );
+
   if (ctx.chat.type !== 'private') {
     return;
   }
