@@ -22,6 +22,8 @@ export const getValidateFields = async (req, res, next) => {
   const { text, userId } = body;
 
   if (!checkOutPermission(userId)) {
+    console.log('user id:', userId);
+    console.log('type user id:', typeof userId);
     res.status(403).send({
       description:
         'Your profile has not received permission to use the program. Please refer to the developer program',
