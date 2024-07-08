@@ -1,6 +1,7 @@
 import multer from 'multer';
 import mime from 'mime-types';
 import fs from 'fs/promises';
+import { checkOutPermission } from './utils';
 
 export const upload = multer({
   dest: 'uploads/',
