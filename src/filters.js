@@ -22,7 +22,10 @@ export const getValidateFields = async (req, res, next) => {
   const { text, userId } = body;
 
   if (!checkOutPermission(+userId)) {
-    res.status(403);
+    res.status(403).send({
+      description:
+        'Your profile has not received permission to use the program. Please refer to the developer program',
+    });
     await fs.unlink(file.path);
 
     return;
