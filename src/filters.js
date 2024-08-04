@@ -7,12 +7,21 @@ export const upload = multer({
   dest: 'uploads/',
   fileFilter: (_, file, cb) => {
     const mimeType = mime.lookup(file.originalname);
-    const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    const acceptedImageTypes = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+    ];
 
     if (acceptedImageTypes.includes(mimeType)) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type. Only JPEG, PNG, and GIF are allowed.'));
+      cb(
+        new Error(
+          'Invalid file type. Only JPEG, PNG, webp, and GIF are allowed.'
+        )
+      );
     }
   },
 });
