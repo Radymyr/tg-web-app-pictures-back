@@ -11,7 +11,11 @@ export const describeImage = async (
   textQuestion
 ) => {
   try {
-    console.log('log from open ai:', encodedImageFile, 'file path:', filePath);
+    const stats = fs.statSync(filePath);
+    const fileSizeInBytes = stats.size;
+    console.log('File path:', filePath);
+    console.log('File size:', fileSizeInBytes);
+
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
