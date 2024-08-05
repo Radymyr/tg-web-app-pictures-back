@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import OpenAI from 'openai';
 import { sendPhotoToUser } from './bot.js';
+import fs from 'fs/promises';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
