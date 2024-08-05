@@ -11,8 +11,9 @@ export const describeImage = async (
   textQuestion
 ) => {
   try {
+    console.log('log from open ai:', encodedImageFile, 'file path:', filePath);
     const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       messages: [
         {
           role: 'user',
@@ -22,7 +23,7 @@ export const describeImage = async (
               type: 'image_url',
               image_url: {
                 url: encodedImageFile,
-                detail: 'high',
+                detail: 'low',
               },
             },
           ],
