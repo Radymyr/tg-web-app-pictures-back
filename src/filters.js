@@ -10,6 +10,7 @@ export const upload = multer({
     const mimeType = mime.lookup(file.originalname);
     const acceptedImageTypes = [
       'image/jpeg',
+      'image/jpg',
       'image/png',
       'image/gif',
       'image/webp',
