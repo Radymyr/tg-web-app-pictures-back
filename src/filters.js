@@ -6,6 +6,7 @@ import { checkOutPermission } from './utils.js';
 export const upload = multer({
   dest: 'uploads/',
   fileFilter: (_, file, cb) => {
+    console.log('file type:', file.filename.slice(file.filename.indexOf('.')));
     const mimeType = mime.lookup(file.originalname);
     const acceptedImageTypes = [
       'image/jpeg',
