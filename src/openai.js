@@ -22,7 +22,7 @@ export const describeImage = async (
               type: 'image_url',
               image_url: {
                 url: encodedImageFile,
-                detail: 'low',
+                detail: 'high',
               },
             },
           ],
