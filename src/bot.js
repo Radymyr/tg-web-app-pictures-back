@@ -79,4 +79,8 @@ export const sendPhotoToUser = async (userId, filePath, caption) => {
   }
 };
 
+bot.telegram.setWebhook(
+  'https://tg-web-app-pictures-back-o9wv47v4r-radymyrs-projects.vercel.app/'
+);
+
 export const startBot = () => bot.launch();
